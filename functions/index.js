@@ -11,13 +11,14 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-//test function
+// test function
+
 exports.sayHello = functions.https.onCall((data, context)=>{
   return "Hi";
 });
 
 
-//test function to create user
+// test function to create user
 exports.test = functions.https.onCall((data, context)=>{
   let success = Boolean;
   const docRef = db.collection("USers").doc("brr").set({
