@@ -35,5 +35,9 @@ exports.test = functions.https.onCall((data, context)=>{
 
 // function to create user based on ipfs hash
 exports.createUser = functions.https.onCall((data, context)=>{
-
+  const hash = data.hash;
+  const docRef = db.collection("Users").doc(hash).set({
+    balance: 2000000,
+    refCode: data.refCode,
+  });
 });
