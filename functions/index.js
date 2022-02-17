@@ -31,3 +31,9 @@ exports.test = functions.https.onCall((data, context)=>{
   let message;
   return ( message = success? "User created" : "There was an error");
 });
+
+
+// function to create user based on ipfs hash
+exports.createUser = functions.https.onCall((data, context)=>{
+
+});
