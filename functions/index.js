@@ -18,26 +18,15 @@ exports.sayHello = functions.https.onCall((data, context)=>{
 });
 
 
-// test function to create user
-exports.test = functions.https.onCall((data, context)=>{
-  let success = Boolean;
-  const docRef = db.collection("USers").doc("brr").set({
-    hash: data.hash,
-  }).then(()=>{
-    success = true;
-  }).catch((error)=>{
-    success = false;
-  });
-  let message;
-  return ( message = success? "User created" : "There was an error");
-});
-
-
 // function to create user based on ipfs hash
 exports.createUser = functions.https.onCall((data, context)=>{
   const hash = data.hash;
   const docRef = db.collection("Users").doc(hash).set({
     balance: 2000000,
     refCode: data.refCode,
+  }).then(() => {
+    console.log("User created successfully");
+  }).catch(() => {
+    console.log("Something went wrong");
   });
 });
